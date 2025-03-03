@@ -5,7 +5,4 @@ numpy
 opencv-python
 imageio
 matplotlib
-seaborn
-# libgl1-mesa-glx
-# libglib2.0-0
-opencv-python-headless
+seaborn 
