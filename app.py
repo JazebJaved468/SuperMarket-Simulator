@@ -1,5 +1,5 @@
 import streamlit as st
-import home, simulate, analysis
+from utils import home, simulate, analysis
 # Set page config
 st.set_page_config(page_title="Markov Chain Simulation", layout="wide")
  
