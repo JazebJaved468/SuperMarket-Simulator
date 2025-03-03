@@ -2,7 +2,7 @@ pandas
 networkx  
 pydot 
 numpy  
-opencv-python
 imageio
 matplotlib
 seaborn 
+opencv-python-headless
