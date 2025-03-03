@@ -4,3 +4,6 @@ pydot
 numpy  
 opencv-python
 imageio
+matplotlib
+cv2
+
