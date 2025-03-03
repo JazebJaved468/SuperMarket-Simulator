@@ -1,0 +1,6 @@
+pandas 
+networkx  
+pydot 
+numpy  
+opencv-python
+imageio
