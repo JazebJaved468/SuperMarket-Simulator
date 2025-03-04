@@ -11,7 +11,7 @@ st.markdown("""
         /* Sidebar styles */
         [data-testid="stSidebar"] {
             background-color: #1E1E1E;  /* Dark background */
-            padding:  20px;
+            padding:  0 20px;
             border-right: 2px solid #FF4B4B;
         }
 
@@ -25,6 +25,13 @@ st.markdown("""
         .block-container {
             padding: 4rem;
         }
+             /* Hide scrollbar for sidebar */
+        [data-testid="stSidebar"]::-webkit-scrollbar {
+            display: none; 
+        }
+        [data-testid="stSidebar"] {
+            scrollbar-width: none; /* For Firefox */
+        }
     </style>
 """, unsafe_allow_html=True)
 
@@ -36,7 +43,7 @@ def add_styling():
             /* convert radio to list of buttons */
             div[role="radiogroup"] {
                 flex-direction:col;
-                padding: 20px 0px;
+                padding: 6px 0px;
             }
             input[type="radio"] + div {
                 background: #ffffff !important;
@@ -80,7 +87,7 @@ with st.sidebar:
         <div style="text-align: center;">
         <img src='https://res.cloudinary.com/dpe70dvug/image/upload/v1741055249/mart_track_logo_ifjdoz.png' width='100' style='display: block; margin: 0 auto;'>
                  <h2 style="margin-top: 10px;font-size:40px">MART TRACK</h2>
-            <h2 style="margin-top: 0px;">Welcome to the supermarket simulation and analysis dashboard! 👋</h2>
+            <h2 style="margin-top: 0px;">Welcome to the supermarket simulation and analysis Application! 👋</h2>
         </div>
         """, 
         unsafe_allow_html=True
