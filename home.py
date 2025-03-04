@@ -17,7 +17,7 @@ def display_image(image_path, caption):
 def show():
 
     # Title & Description
-    st.title("Markov Chain Supermarket Simulation 🏪")
+    st.title("Supermarket Simulation Using Markov Chains 🏪")
     st.markdown(
         """
         <h4>This app visualizes customer behavior in a supermarket using <b>Markov Chain simulation</b>.</h4>

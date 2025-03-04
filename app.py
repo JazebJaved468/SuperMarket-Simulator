@@ -3,7 +3,7 @@ import home, simulate, analysis
 
 from PIL import Image 
 # Set page config
-st.set_page_config(page_title="Markov Chain Simulation", layout="wide")
+st.set_page_config(page_title="Supermarket Simulation", layout="wide")
  
 # Custom CSS for styling sidebar
 st.markdown("""
@@ -76,8 +76,6 @@ def add_styling():
 
 add_styling()   
 # Sidebar Navigation
-# st.sidebar.title("Welcome To Market Analyzer 👋")
-# page = st.sidebar.radio("",["Get Started", "Simulate", "Analysis"])
 
 with st.sidebar:
 
@@ -93,10 +91,7 @@ with st.sidebar:
         unsafe_allow_html=True
     )
 
-    st.markdown("" , unsafe_allow_html=True)
-
-    # # Add other sidebar components below
-    # st.write("Welcome to the customer simulation dashboard!")
+    st.markdown("" , unsafe_allow_html=True) 
 
 
 page = st.sidebar.radio("",["Get Started", "Simulate", "Analysis"])
