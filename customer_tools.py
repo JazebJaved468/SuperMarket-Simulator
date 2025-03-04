@@ -43,3 +43,9 @@ class Customer:
                 self.history.append(self.state)
                 self.nb_state += 1
                 yield self.state
+
+
+if __name__ == '__main__':
+    # Create a customer
+    customer = Customer(1)
+    print(customer)

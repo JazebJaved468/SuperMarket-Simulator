@@ -1,5 +1,7 @@
 import streamlit as st
-from utils import home, simulate, analysis
+import home, simulate, analysis
+
+from PIL import Image 
 # Set page config
 st.set_page_config(page_title="Markov Chain Simulation", layout="wide")
  
@@ -41,7 +43,7 @@ def add_styling():
                 color: #000;
                 border-radius: 30px !important;
                 padding: 8px 30px !important;
-                margin  : 0px 20px !important;
+                # margin  : 0px 20px !important;
             }
             input[type="radio"][tabindex="0"] + div {
                 # background: #E6FF4D !important;
@@ -67,7 +69,29 @@ def add_styling():
 
 add_styling()   
 # Sidebar Navigation
-st.sidebar.title("Welcome To Market Analyzer 👋")
+# st.sidebar.title("Welcome To Market Analyzer 👋")
+# page = st.sidebar.radio("",["Get Started", "Simulate", "Analysis"])
+
+with st.sidebar:
+
+     
+    st.markdown(
+        """
+        <div style="text-align: center;">
+        <img src='https://res.cloudinary.com/dpe70dvug/image/upload/v1741055249/mart_track_logo_ifjdoz.png' width='100' style='display: block; margin: 0 auto;'>
+                 <h2 style="margin-top: 10px;font-size:40px">MART TRACK</h2>
+            <h2 style="margin-top: 0px;">Welcome to the supermarket simulation and analysis dashboard! 👋</h2>
+        </div>
+        """, 
+        unsafe_allow_html=True
+    )
+
+    st.markdown("" , unsafe_allow_html=True)
+
+    # # Add other sidebar components below
+    # st.write("Welcome to the customer simulation dashboard!")
+
+
 page = st.sidebar.radio("",["Get Started", "Simulate", "Analysis"])
 
 # Render Selected Page
@@ -79,33 +103,4 @@ elif page == "Analysis":
     analysis.show()
 
 
-# import streamlit as st
-
-# def main():
-#     # st.set_page_config(page_title="Multi-Page App", layout="wide")
-    
-#     # Sidebar navigation
-#     st.sidebar.title("Navigation")
-#     page = st.sidebar.radio("Go to", ["Home", "About", "Contact"])
-    
-#     if page == "Home":
-#         home()
-#     elif page == "About":
-#         about()
-#     elif page == "Contact":
-#         contact()
-
-# def home():
-#     st.title("Home Page")
-#     st.write("Welcome to the Home Page of our Streamlit app!")
-
-# def about():
-#     st.title("About Page")
-#     st.write("This is a simple Streamlit app with sidebar navigation.")
-
-# def contact():
-#     st.title("Contact Page")
-#     st.write("You can reach us at: contact@example.com")
-
-# if __name__ == "__main__":
-#     main()
+ 
