@@ -12,7 +12,8 @@ st.markdown("""
         [data-testid="stSidebar"] {
             background-color: #1E1E1E;  /* Dark background */
             padding:  0 20px;
-            border-right: 2px solid #FF4B4B;
+            border-right: 2px solid #FF4B4B; 
+            width: 360px !important; 
         }
 
         /* Sidebar title */
