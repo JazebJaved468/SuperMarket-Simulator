@@ -1,5 +1,2 @@
-cd venv
-scripts/activate
-cd..
-cd streamlit-app
+venv/scripts/activate
 streamlit run app.py
