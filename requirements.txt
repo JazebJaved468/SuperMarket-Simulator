@@ -6,3 +6,4 @@ imageio
 matplotlib
 seaborn 
 opencv-python-headless
+streamlit
