@@ -18,26 +18,35 @@ def show():
 
     # Title & Description
     st.title("Markov Chain Supermarket Simulation 🏪")
-    st.write("""
-    This app visualizes customer behavior in a supermarket using **Markov Chain simulation**.
-    Customers transition between different sections based on predefined probabilities.
-    """)
+    st.markdown(
+        """
+        <h4>This app visualizes customer behavior in a supermarket using <b>Markov Chain simulation</b>.</h4>
+        <p style="font-size:20px;margin-top:10px;">
+        Customers transition between different sections based on predefined probabilities in Transition Probability Matrix.
+        </p>
+        """, 
+        unsafe_allow_html=True
+    )
 
     
 
     # Create tabs
-    tab1, tab2, tab3, tab4 = st.tabs(["Overview", "TPM",  "Markov Diagram",  "Usage Guide"])
+    tab1, tab2, tab3 = st.tabs(["Overview", "TPM",  "Markov Diagram"])  
 
     # Tab 1: Overview
     with tab1:
         tab_overview.show()
 
     with tab2:
+        st.write("")
         st.subheader("📊 Transition Probability Matrix")
-        st.write("A visual representation of the transition probability Matrix")
+        st.write("")
+        st.success("A visual representation of the Transition Probability Matrix used in the simulation.")
+        st.write("")
+        st.write("")
         # st.code("python make_markov_diagram.py")
         image = Image.open("assets/probability_transition_matrix.png")
-        st.image(image, caption="Markov Chain Diagram")
+        st.image(image, caption="Transition Probability Matrix")
         
 
    
@@ -45,36 +54,22 @@ def show():
 
     # Tab 3: Markov Diagram
     with tab3:
+        st.write("")
         st.subheader("🔗 Markov Chain Diagram")
-        st.write("A visual representation of the transition probabilities between different supermarket sections.")
-        # st.code("python make_markov_diagram.py")
+        st.write("")
+        st.success("A visual representation of the transition probabilities between different supermarket sections.")
+        st.write("")
+        st.write("")
         image = Image.open("assets/markov.png")
         st.image(image, caption="Markov Chain Diagram")
-
-    # Tab 4: Usage Guide
-    with tab4:
-        st.subheader("🚀 How to Use?")
-        st.write("""
-        1. Clone the repository.
-        2. Install dependencies: `pip install -r requirements.txt`
-        3. Run this app: `streamlit run app.py`
-        """)
-        st.success("You're all set! Use the sidebar to navigate.")
+ 
+        
 
 
 
     
    
-
-    # How to Use
-    # st.subheader("🚀 How to Use?")
-    # st.write("""
-    # 1. Clone the repository.
-    # 2. Install dependencies: `pip install -r requirements.txt`
-    # 3. Run this app: `streamlit run app.py`
-    # """)
-
-    # st.success("Ready to explore customer movements? Use the sidebar to navigate!")
+ 
 
 if __name__ == "__main__":
-    show()
+        show()
