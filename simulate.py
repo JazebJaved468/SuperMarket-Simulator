@@ -57,7 +57,7 @@ def show():
               unsafe_allow_html=True,
           )
         except FileNotFoundError:
-            st.error("First run the simulation to generate data.")
+            st.info("Run the simulation to generate results.", icon="ℹ️")
 
        
 
@@ -90,7 +90,7 @@ def show():
                   else:
                       st.warning("Customer not found!")
             except FileNotFoundError:
-                st.error("First run the simulation to generate data.")
+                st.info("Run the simulation to generate output data.", icon="ℹ️")
     
 
 
