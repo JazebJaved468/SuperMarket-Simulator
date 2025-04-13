@@ -1,5 +1,5 @@
 import streamlit as st
-import home, simulate, analysis
+import home, simulate, analysis,data_configs
 
 from PIL import Image 
 # Set page config
@@ -51,6 +51,12 @@ def add_styling():
                 color: #000;
                 border-radius: 30px !important;
                 padding: 8px 30px !important;
+                width: 200px !important;
+                height: 50px !important;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                 
                 # margin  : 0px 20px !important;
             }
             input[type="radio"][tabindex="0"] + div {
@@ -95,13 +101,15 @@ with st.sidebar:
     st.markdown("" , unsafe_allow_html=True) 
 
 
-page = st.sidebar.radio("",["Get Started", "Simulate", "Analysis"])
+page = st.sidebar.radio("",["Get Started", "Data Configurations", "Simulate", "Analysis"])
 
 # Render Selected Page
 if page == "Get Started":
     home.show()
 elif page == "Simulate":
     simulate.show()
+elif page == "Data Configurations":
+    data_configs.show()
 elif page == "Analysis":
     analysis.show()
 

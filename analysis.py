@@ -22,7 +22,7 @@ plt.rcParams["ytick.color"] = "white"
 
 def show():
 
-    fig, ax = plt.subplots(figsize=(8, 5))
+    fig, ax = plt.subplots(figsize=(14, 5))
     for spine in ax.spines.values():
                     spine.set_visible(False)
     st.title("📊 Data Analysis - One Day Simulation")
@@ -62,7 +62,22 @@ def show():
             st.write("")
             st.write("")
             try:
-                st.dataframe(df_customers.head(300) , height=600 ,use_container_width=True)  # Display as an interactive table
+                st.dataframe(df_customers.head(300) , height=600 ,use_container_width=True, hide_index=True,  column_config={
+                "time": st.column_config.Column(
+                    "Entering Time",),
+               "location": st.column_config.Column(
+                    "Shopping Area",  ),
+               "customer_id": st.column_config.Column(
+                    "Customer",  ),
+               "leaving_time": st.column_config.Column(
+                    "Leaving Time",  ),
+               "hour": st.column_config.NumberColumn(
+                    "Hour", format="%d : 00"),
+               "total_time": st.column_config.NumberColumn(
+                    "Total Time Spent", format="%d mins"),
+               "price": st.column_config.NumberColumn(
+                    "Amount Spent (Rs)", format=" Rs. %d"),
+            },)  # Display as an interactive table
             except FileNotFoundError:
                 st.error("Some Error Occurred! while generating the customer simulation data.")
 
@@ -84,8 +99,8 @@ def show():
                 df_plot_entrance = pd.DataFrame({'hour': df_plot_entrance.index, 'count': df_plot_entrance.values})
                 
             
-                fig, ax = plt.subplots(figsize=(8, 5))
-                sns.barplot(x='hour', y='count', data=df_plot_entrance, ax=ax ,  width=1, palette='Reds')
+                fig, ax = plt.subplots(figsize=(14, 5))
+                sns.barplot(x='hour', y='count', data=df_plot_entrance, ax=ax ,  width=0.9, palette='Reds')
                
                 ax.set_ylabel('Number of New Entrances')
                 st.pyplot(fig)
@@ -105,9 +120,8 @@ def show():
                 
                 df_revenue_hour = df_customers.groupby('hour').agg({"price": 'sum'}).reset_index()
                 
-                st.subheader("📈 Area Chart")
-                # fig, ax = plt.subplots(figsize=(8, 5))
-                fig, ax = plt.subplots(figsize=(8, 5))
+                st.subheader("📈 Area Chart") 
+                fig, ax = plt.subplots(figsize=(14, 5))
                 sns.lineplot(x='hour', y='price', data=df_revenue_hour, ax=ax, color="red", linewidth=2)
                 ax.fill_between(df_revenue_hour["hour"], df_revenue_hour["price"], color="red", alpha=0.2)
                 ax.set_ylabel('Revenue')
@@ -124,10 +138,9 @@ def show():
 
                 st.subheader("📊 Bar Chart")
                
-
                 
-                fig, ax = plt.subplots(figsize=(8, 5))
-                sns.barplot(x='hour', y='price', data=df_revenue_hour, ax=ax, width=1, palette='Reds')
+                fig, ax = plt.subplots(figsize=(14, 5))
+                sns.barplot(x='hour', y='price', data=df_revenue_hour, ax=ax, width=0.9, palette='Reds')
                 ax.set_ylabel('Revenue per Hour')
                 st.pyplot(fig)
             
@@ -147,7 +160,7 @@ def show():
                 df_revenue_section = df_customers.loc[(df_customers['location'] != 'entrance') & (df_customers['location'] != 'checkout')].copy()
                 df_revenue_section = df_revenue_section.groupby('location').agg({"price": 'sum'}).reset_index()
                 
-                fig, ax = plt.subplots(figsize=(6, 3))
+                fig, ax = plt.subplots(figsize=(8, 3))
                 ax.pie(df_revenue_section['price'], labels=df_revenue_section['location'], autopct='%1.1f%%', startangle=140, colors=sns.color_palette('husl'), textprops={'fontsize': 8,})
                 ax.axis('equal')
                 ax.set_title("Revenue Distribution by Section" , fontsize=10, pad=20)
@@ -169,7 +182,7 @@ def show():
                 df_plot_hour = df_customers.loc[(df_customers['location'] != 'entrance') & (df_customers['location'] != 'checkout')].copy()
                 df_plot_hour = df_plot_hour.groupby(['hour', 'location']).agg({"customer_id": pd.Series.nunique}).reset_index()
                 
-                fig, ax = plt.subplots(figsize=(8, 5))
+                fig, ax = plt.subplots(figsize=(14, 5))
                 # for spine in ax.spines.values():
                 #     spine.set_visible(False)
                     
@@ -194,12 +207,15 @@ def show():
                 df_plot_time = df_customers.loc[df_customers['location'] == 'entrance'].copy()
                 df_plot_time = df_plot_time.groupby('hour').agg({"total_time": 'mean'}).reset_index()
                 
-                fig, ax = plt.subplots(figsize=(8, 5))
+                fig, ax = plt.subplots(figsize=(14, 5))
                 # for spine in ax.spines.values():
                 #     spine.set_visible(False)
                 sns.pointplot(x='hour', y='total_time', data=df_plot_time, ax=ax,color="red" )
                 ax.set_ylabel('Average total time (min)')
-                ax.set_ylim([6, 9])
+
+                min_time = df_plot_time['total_time'].min()
+                max_time = df_plot_time['total_time'].max()
+                ax.set_ylim([min_time, max_time])
                 st.pyplot(fig)
             
             except FileNotFoundError:
@@ -226,7 +242,7 @@ def show():
                     
                     df_plot_time = df_customers.loc[df_customers['location'] == 'entrance'].copy()
                     
-                    fig, ax = plt.subplots(figsize=(8, 5))
+                    fig, ax = plt.subplots(figsize=(14, 5))
                    
                     sns.boxplot(data=df_plot_time, y="total_time", x="hour", orient="v", ax=ax , palette='Reds' , width=0.5,
                                 
@@ -246,7 +262,7 @@ def show():
 
                     # Plot Time Distribution per Hour using a Violin Plot
                     st.subheader("🎻 Violin Plot")
-                    fig, ax = plt.subplots(figsize=(8, 5))
+                    fig, ax = plt.subplots(figsize=(14, 5))
                     sns.violinplot(data=df_plot_time, y="total_time", x="hour", ax=ax, palette='Reds' 
                                     ,inner='quartile',        # Shows quartiles inside violin
                                     linewidth=1,             # Line width
