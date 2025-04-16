@@ -3,7 +3,7 @@ import home, simulate, analysis,data_configs
 
 from PIL import Image 
 # Set page config
-st.set_page_config(page_title="Supermarket Simulation", layout="wide")
+st.set_page_config(page_title="Mart Track ", layout="wide")
  
 # Custom CSS for styling sidebar
 st.markdown("""
