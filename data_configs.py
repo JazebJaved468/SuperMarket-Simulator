@@ -25,8 +25,8 @@ def show():
         # Define default values for the hourly entrance counts
         default_hours = list(range(7, 22))  # 7 AM to 9 PM
         # default_counts = [9, 20, 35, 45, 65, 80, 70, 55, 60, 75, 85, 80, 65, 40, 15]
-        # default_counts = [5, 12, 18, 15, 10, 14, 25, 30, 24, 16, 10, 8, 5, 3, 2]
-        default_counts = [5, 0, 0 , 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        default_counts = [5, 12, 18, 15, 10, 14, 25, 30, 24, 16, 10, 8, 5, 3, 2]
+        # default_counts = [5   , 0, 0 , 0 ,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         # Initialize session state for the data if it doesn't exist
         if 'entrance_data' not in st.session_state:
             st.session_state.entrance_data = pd.DataFrame({

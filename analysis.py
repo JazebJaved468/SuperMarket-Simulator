@@ -64,13 +64,15 @@ def show():
             try:
                 st.dataframe(df_customers.head(300) , height=600 ,use_container_width=True, hide_index=True,  column_config={
                 "time": st.column_config.Column(
-                    "Entering Time",),
+                    "Entering Time (section)",),
+                       "arrival_time": st.column_config.Column(
+                    "Arrival Time (Supermarket)",),
                "location": st.column_config.Column(
                     "Shopping Area",  ),
                "customer_id": st.column_config.Column(
                     "Customer",  ),
                "leaving_time": st.column_config.Column(
-                    "Leaving Time",  ),
+                    "Leaving Time (Supermarket)",  ),
                "hour": st.column_config.NumberColumn(
                     "Hour", format="%d : 00"),
                "total_time": st.column_config.NumberColumn(

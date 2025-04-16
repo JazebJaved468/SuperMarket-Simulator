@@ -26,9 +26,7 @@ class Customer:
         return next(self.gen)
 
     def markov(self):
-
         while self.state != 'checkout':
-
             # calculate the next state
             next_state = np.random.choice(STATES, 1, p=df_Q.loc[f'{self.state}'])[0]
 
