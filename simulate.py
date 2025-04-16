@@ -17,7 +17,7 @@ def show():
       # Simulation input controls
     # start_time = st.time_input("Select Start Time", value=None)
     # end_time = st.time_input("Select End Time", value=None)
-    num_customers = st.number_input("Number of Customers to Simulate", min_value=1, max_value=500, value=10)
+    # num_customers = st.number_input("Number of Customers to Simulate", min_value=1, max_value=500, value=10)
 
       # Add entrance data configuration section
     st.write("")
@@ -97,8 +97,14 @@ div[data-testid="stButton"] button:first-child:hover {
             #   do_simulation_with_binded_data()
               simulation_bind_with_analysis()
               print("Simulation ended")
-              st.success(f"Simulation completed for {num_customers} customers")
-              # st.write("SIMULATION RESULTS")
+                    # Get the maximum customer ID from the generated file
+              try:
+                simulation_df = pd.read_csv('simulation/one_day_simulation.csv')
+                numberOfCustomers = simulation_df['customer_id'].max()
+                st.success(f"Simulation completed for {numberOfCustomers} customers")
+              except FileNotFoundError:
+                st.error("Error: Simulation output file not found.")
+        # st.write("SIMULATION RESULTS")
               # file_ = open("simulation/customer_simulation.gif", "rb")
               # contents = file_.read()
               # data_url = base64.b64encode(contents).decode("utf-8")

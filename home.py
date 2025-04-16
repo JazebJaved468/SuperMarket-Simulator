@@ -5,8 +5,8 @@
 # st.write("Please select the code snippet you want to visualize from the dropdown menu.")
 
 import streamlit as st
-from PIL import Image 
-import tab_overview
+from PIL import Image
+import tab_overview  
 
 # Load and Display Images
 def display_image(image_path, caption):
